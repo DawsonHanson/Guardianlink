@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{/global/css/global.css}">
+	<link rel="stylesheet" th:href="@{/home/css/home.css}">
+	<title>GuardianLink</title>
+</head>
+
+<body>
+	<div class="main-content">
+		
+		<div class="header">
+			<div class="logo-container">
+				<h1>GardianLink</h1>
+				<img th:src="@{/home/images/logo.png}" alt="company logo">
+			</div>
+			
+			<a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+			
+			<div class="button-container">
+				<button onclick="location.href='/signin'">Sign In</button>
+				<button onclick="location.href='/companysignup'">Company Account</button>
+				<button onclick="location.href='/volunteersignup'">Volunteer Account</button>
+			</div>
+		</div>
+			
+		<div class="info-container">
+			<img th:src="@{/home/images/laptops.jpg}" alt="laptops image">
+			<div class="text-container">
+				<h2>Who we are</h2>
+				<p>
+					GuardianLink is a platform dedicated to bridging the gap between providers of cybersecurity specialists
+				  	and clients in need of these services. Our primary focus is on supporting non-profit organizations at no
+				  	cost to them.
+				</p>
+			</div>
+		</div>
+			
+		<div class="info-container">
+			<img th:src="@{/home/images/code.jpg}" alt="coding image">
+			<div class="text-container">
+				<h2>What we do</h2>
+				<p>
+					Our platform facilitates a streamlined process: cybersecurity professionals seeking to volunteer can
+				   	easily join through our web application to offer their expertise and aid. Simultaneously, non-profit
+				   	organizations can also apply to become clients of our company, seeking the assistance they require.
+				</p>
+			</div>
+		</div>
+			
+		<div class="info-container">
+			<img th:src="@{/home/images/teamwork.jpg}" alt="teamwork image">
+			<div class="text-container">
+				<h2>Why we do it</h2>
+				<p>
+					Our overarching goal is to seamlessly connect these two ends of the spectrum, ensuring that the need
+					for cybersecurity assistance within non-profit organizations is met by dedicated and skilled volunteers.
+					At GuardianLink, our mission is to fulfill these needs efficiently and effectively.
+				</p>
+			</div>
+		</div>
+			
+		<div class="partnership-container">
+			<h1>Partnerships</h1>
+			<div class="partnership-img-container">
+				<img th:src="@{/home/images/lotussecurity.png}" alt="lotus security logo">	
+				<p>Lotus Security</p>			
+			</div>
+			<div class="partnership-img-container">
+				<img th:src="@{/home/images/ecofund.png}" alt="eco fund logo">
+				<p>Eco Fund</p>
+			</div>
+			<div class="partnership-img-container">
+				<img th:src="@{/home/images/cyberpups.png}" alt="cyber pups logo">
+				<p>Cyber Pups</p>
+			</div>	
+		</div>	
+	</div>
+</body>
+</html>

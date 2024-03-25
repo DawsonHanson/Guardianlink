@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{/global/css/global.css}">
+	<link rel="stylesheet" th:href="@{/global/css/dashboardTemplate.css}">
+	<title>Dashboard</title>
+</head>
+
+<body>
+	<div class="main-content">
+	
+		<div class="header">
+		
+			<div class="logo-container" onclick="location.href='/home'">
+				<h1>GardianLink</h1>
+				<img th:src="@{/home/images/logo.png}" alt="company logo">
+			</div>
+			
+			<div class="welcome-msg">
+				<h1>Welcome</h1>
+				<h1 th:text="${currentuser.username}"></h1>
+			</div>
+			
+			<div class="button-container">
+				<button onclick="location.href='/editvolunteer'">Edit Profile</button>
+				<button onclick="location.href='/logout'">Logout</button>
+			</div>
+			
+		</div>
+
+		<div class="msg-container">
+			<div th:if="${param.emailsuccess}">
+				<p class="success-message">Email sent successfully!</p>
+			</div>
+
+			<div th:if="${param.emailerror}">
+				<p class="error-message">Error sending email!</p>
+			</div>
+		</div>
+		
+		<div class="users-container">
+			<div class="user" th:each="user : ${users}">
+				
+				<div class="info-container">
+					<h3>Organization Name</h3>
+					<p th:text="${user.orgName}"></p>
+				</div>
+				
+				<div class="info-container">
+					<h3>Email</h3>
+					<p th:text="${user.email}"></p>
+				</div>
+				
+				<div class="info-container">
+					<h3>Main Concern</h3>
+					<p th:text="${user.concern}"></p>
+				</div>
+
+				<form action="#" th:action="@{/sendemailtocompany}" th:object="${emailDto}" method="Post">
+					<input type="text" th:value="${user.email}" name="email" id="email" hidden="true"> 
+					<input type="text" th:value="${user.orgName}" name="orgName" id="orgName" hidden="true"> 
+					<input type="submit" value="Send Message">
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

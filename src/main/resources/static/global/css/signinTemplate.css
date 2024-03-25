@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+h1 {
+	color: var(--dark-blue);
+	text-align: center;
+}
+
+p {
+	color: var(--dark-blue);
+}
+
+img {
+	width: 7rem;
+	height: 7rem;
+	align-self: center;
+  	justify-self: center;
+}
+
+img:hover {
+	cursor: pointer;
+}
+
+.main-content {
+	display: grid;
+	height: 100vh;
+ 	grid-template-rows: .5fr 1fr .5fr;
+ 	background-color: var(--dark-blue);
+}
+
+.container {
+	display: grid;
+  	grid-template-rows: .5fr 1fr .5fr;
+  	grid-area: 2/1;
+  	justify-content: center;
+	background-color: var(--grey);
+}
+
+.msg-container {
+	justify-self: center;
+	align-self: center;
+}
+
+.form-container {
+	grid-area: 2/1;
+	display: flex;
+	justify-content: center;
+}

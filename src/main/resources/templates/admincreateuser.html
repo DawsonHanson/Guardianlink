@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<script th:src="@{/global/js/pwdValidation.js}" defer></script>
+	<link rel="stylesheet" th:href="@{/global/css/global.css}">
+	<link rel="stylesheet" th:href="@{/global/css/formStyle.css}">
+	<link rel="stylesheet" th:href="@{/global/css/signupTemplate.css}">
+	<title>Create Account</title>
+</head>
+
+<body>
+
+	<div class="main-content">
+    	<img th:src="@{/home/images/logo.png}" alt="company logo" onclick="location.href='/admin'">
+    	<div class="container">
+
+      		<div class="msg-container">
+      			<h1>Create Account</h1>
+
+				<div th:if="${param.success}">
+			    	<p class="success-message">Account Creation successful!</p>
+		    	</div>
+		    	
+				<div th:if="${param.usernameexists}">
+			    	<p class="error-message">Username is Taken</p>
+		    	</div>
+		    	
+		    	<div th:if="${param.emailexists}">
+			    	<p class="error-message">Email Address is Taken</p>
+		    	</div>   
+      		</div>
+
+			<div class="forms-container">
+
+				<form id="Form1" th:action="@{/admincreateuser}" th:object="${userDto}" method="post">
+    				<h3>Create Volunteer Account</h3><br>
+
+					<label for="username">User Name:</label><br>
+					<input type="text" th:field=*{username} required><br>
+
+					<label for="password">Password:</label><br>
+					<input type="password" id="Password1" th:field=*{password} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required><br>
+					<div id="Message1"></div>
+		
+					<label for="confirmpassword">Confirm Password:</label><br>
+					<input type="password" id="Confirm-password1" required><br>
+    
+					<label for="email">Email:</label><br>
+					<input type="email" th:field=*{email} pattern="(?!(^[.-].*|[^@]*[.-]@|.*\.{2,}.*)|^.{254}.)([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@)(?!-.*|.*-\.)([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,15}" required><br>
+
+					<label for="firstname">First Name:</label><br>
+					<input type="text" th:field=*{firstName} required><br>
+		
+					<label for="lastname">Last Name:</label><br>
+					<input type="text" th:field=*{lastName} required><br>
+		
+					<label for="hours">Hours AV Per Week:</label><br>
+					<input type="number" th:field=*{hours} required><br>
+		
+    				<div class="empty-class">
+						<p>Criminal Background Check:</p>
+
+    					<div class="radio-buttons">
+							<label for="yes">Yes:</label>
+							<input type="radio" name="backgroundCheck" id="yes" value="Yes">
+
+							<label for="no">No:</label>
+							<input type="radio" checked="checked" name="backgroundCheck" id="no" value="No">
+    					</div>
+
+					</div>
+
+					<label for="linkedinurl">LinkedIn Page URL:</label><br>
+					<input type="url" th:field=*{linkedinUrl} required><br>
+		
+					<input type="submit" value="Submit" th:onclick="pwdValidation('Form1', 'Password1', 'Confirm-password1', 'Message1')">
+				</form>
+				
+				<form id="Form2" th:action="@{/admincreateuser}" th:object="${userDto}" method="post">
+					<h3>Create Company Account</h3><br>
+				
+					<label for="username">User Name:</label><br>
+					<input type="text" th:field=*{username} required><br>
+		
+					<label for="password">Password:</label><br>
+					<input type="password" id="Password2" th:field=*{password} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required><br>
+					<div id="Message2"></div>
+
+					<label for="confirmpassword">Confirm Password:</label><br>
+					<input type="password" id="Confirm-password2"  required><br>
+		
+					<label for="email">Email:</label><br>
+					<input type="email" th:field=*{email} pattern="(?!(^[.-].*|[^@]*[.-]@|.*\.{2,}.*)|^.{254}.)([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@)(?!-.*|.*-\.)([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,15}" required><br>
+		
+					<label for="orgname">Organization Name:</label><br>
+					<input type="text" th:field=*{orgName} required><br>
+		
+					<label for="concern">Areas of Concern</label><br>
+					<textarea th:field=*{concern} wrap="hard" rows="8" cols="24" maxlength="200" required></textarea><br>
+		
+					<input type="submit" value="Submit" th:onclick="pwdValidation('Form2', 'Password2', 'Confirm-password2', 'Message2')">
+				</form>
+				
+				
+				<form id="Form3" th:action="@{/admincreateuser}" th:object="${userDto}" method="post">
+					<h3>Create Admin Account</h3><br>
+				
+					<label for="username">User Name:</label><br>
+					<input type="text" th:field=*{username} required><br>
+		
+					<label for="password">Password:</label><br>
+					<input type="password" id="Password3" th:field=*{password} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required><br>
+					<div id="Message3"></div>
+
+					<label for="confirmpassword">Confirm Password:</label><br>
+					<input type="password" id="Confirm-password3"  required><br>
+		
+					<label for="email">Email:</label><br>
+					<input type="email" th:field=*{email} pattern="(?!(^[.-].*|[^@]*[.-]@|.*\.{2,}.*)|^.{254}.)([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@)(?!-.*|.*-\.)([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,15}" required><br>
+		
+					<input type="submit" value="Submit" th:onclick="pwdValidation('Form3', 'Password3', 'Confirm-password3', 'Message3')">
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

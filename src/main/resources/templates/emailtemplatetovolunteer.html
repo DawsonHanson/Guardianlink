@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>GuardianLink</title>
+</head>
+<body>
+    <h3>Greetings from GuardianLink!</h3>
+    <p>Good day <span th:text="${firstName}"></span> <span th:text="${lastName}"></span>,</p>
+    <p>We look forward to working with you, please contact us at <a th:href="'mailto:' + ${fromEmail}"><span th:text="${fromEmail}"></span></a></p>
+    <p>Thank you,</p>
+    <p><span th:text="${orgName}"></span></p>
+</body>
+</html>

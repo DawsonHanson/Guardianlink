@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{/global/css/global.css}">
+	<link rel="stylesheet" th:href="@{/global/css/formStyle.css}">
+	<link rel="stylesheet" th:href="@{/global/css/dashboardTemplate.css}">
+	<title>Dashboard</title>
+</head>
+
+<body>
+	<div class="main-content">
+	
+		<div class="header">
+		
+			<div class="logo-container" onclick="location.href='/home'">
+				<h1>GardianLink</h1>
+				<img th:src="@{/home/images/logo.png}" alt="company logo">
+			</div>
+			
+			<div class="welcome-msg">
+				<h1>Welcome</h1>
+				<h1 th:text="${currentuser.username}"></h1>
+			</div>
+			
+			<div class="button-container">
+				<button onclick="location.href='/admincreateuser'">Create Account</button>
+				<button onclick="location.href='/editadmin'">Edit Profile</button>
+				<button onclick="location.href='/logout'">Logout</button>
+			</div>
+			
+		</div>
+
+		<div class="msg-container">
+			<div th:if="${param.success}"> 
+				<p class="success-message">Password change successful!</p>
+			</div>
+	
+			<div th:if="${param.error}"> 
+				<p class="error-message">Only one admin user, cannot delete!</p>
+			</div>
+			
+			<div th:if="${param.errornulluser}"> 
+				<p class="error-message">Null User Error!</p>
+			</div>
+		</div>
+		
+		<div class="users-container">
+		
+			<div class="user" th:each="user : ${usersAdmin}">
+				<div class="info-container">
+					<h3>Username</h3>
+					<p th:text="${user.username}"></p>
+				</div>
+				
+				<div class="info-container">
+					<h3>Email</h3>
+					<p th:text="${user.email}"></p>
+				</div>
+				
+				<form th:action="@{/admin}" th:object="${userDto}" method="Post">
+					<input type="text" th:value="${user.username}" name="username" id="username" hidden="true">
+					<input type="password" th:field=*{password} placeholder="New Password" required><br>
+					<input type="submit" value="Change Password">
+				</form>
+				
+				<form th:action="@{/admindeleteuser}" th:object="${userDto}" method="Post">
+					<input type="text" th:value="${user.username}" name="username" id="username" hidden="true">
+					<input type="submit" value="Delete Account">
+				</form>
+			</div>
+			
+			<div class="user" th:each="user : ${usersVolunteer}">
+				<div class="info-container">
+					<h3>Username</h3>
+					<p th:text="${user.username}"></p>
+				</div>
+				
+				<div class="info-container">
+					<h3>First Name</h3>
+					<p th:text="${user.firstName}"></p>
+				</div>
+				
+				<div class="info-container">
+					<h3>Last Name</h3>
+					<p th:text="${user.lastName}"></p>
+				</div>
+				
+				<div class="info-container">
+					<h3>Email</h3>
+					<p th:text="${user.Email}"></p>
+				</div>
+				
+				<div class="info-container">
+					<h3>Hours AV Per Week</h3>
+					<p th:text="${user.hours}"></p>
+				</div>
+				
+				<div class="info-container">
+					<h3>Criminal Background Check</h3>
+					<p th:text="${user.backgroundCheck}"></p>
+				</div>
+				
+				<div class="info-container">
+					<h3>Linkedin Url</h3>
+					<p th:text="${user.linkedinUrl}"></p>
+				</div>
+				
+				<form th:action="@{/admin}" th:object="${userDto}" method="Post">
+					<input type="text" th:value="${user.username}" name="username" id="username" hidden="true">
+					<input type="password" th:field=*{password} placeholder="New Password" required><br>
+					<input type="submit" value="Change Password">
+				</form>
+				
+				<form th:action="@{/admindeleteuser}" th:object="${userDto}" method="Post">
+					<input type="text" th:value="${user.username}" name="username" id="username" hidden="true">
+					<input type="submit" value="Delete Account">
+				</form>
+			</div>
+			
+			<div class="user" th:each="user : ${usersCompany}">
+			
+				<div class="info-container">
+					<h3>Username</h3>
+					<p th:text="${user.username}"></p>
+				</div>
+				
+				<div class="info-container">
+					<h3>Organization Name</h3>
+					<p th:text="${user.orgName}"></p>
+				</div>
+				
+				<div class="info-container">
+					<h3>Email</h3>
+					<p th:text="${user.email}"></p>
+				</div>
+				
+				<div class="info-container">
+					<h3>Main Concern</h3>
+					<p th:text="${user.concern}"></p>
+				</div>				
+		
+				<form th:action="@{/admin}" th:object="${userDto}" method="Post">
+					<input type="text" th:value="${user.username}" name="username" id="username" hidden="true">
+					<input type="password" th:field=*{password} placeholder="New Password" required><br>
+					<input type="submit" value="Change Password">
+				</form>
+				
+				<form th:action="@{/admindeleteuser}" th:object="${userDto}" method="Post">
+					<input type="text" th:value="${user.username}" name="username" id="username" hidden="true">
+					<input type="submit" value="Delete Account">
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

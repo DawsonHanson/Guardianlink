@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+h2, p {
+	color: var(--dark-blue);
+}
+
+.content {
+	display: grid;
+	height: 100vh;
+ 	grid-template-rows: .5fr 1fr .5fr;
+ 	background-color: var(--dark-blue);
+}
+
+.info-container {
+	display: flex;
+	flex-direction: column;
+	grid-area: 2/1;
+	justify-content: center;
+	text-align: center;
+	background-color: var(--grey);
+}

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+*, *:before, *:after {
+	box-sizing: border-box;
+  	padding: 0%;
+  	margin: 0%;
+}
+
+:root {
+	--dark-blue: #1F2937;
+	--blue: #3882f6;
+	--grey: #e5e7eb;
+	--dark-grey: grey;
+	--white: white;
+	--off-white: #f9faf8;
+	--red: red;
+}
+
+p {
+	font-size: 1.2rem;
+}

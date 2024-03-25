@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+label {
+  	color: var(--dark-blue);
+}
+
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=url], textarea {
+  	appearance: none;
+  	margin-bottom: 10px;
+  	border: 1px solid var(--dark-blue);
+  	border-radius: 3px;
+  	background-color: var(--off-white);
+}
+
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=url] {
+  	width: 210px;
+  	height: 25px;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, input[type=url]:focus, textarea:focus {
+  	outline: none;
+  	border: 1px solid var(--blue);
+  	box-shadow: 1.8px 1.8px 1.8px var(--dark-grey);
+}
+
+textarea {
+  	resize: none;
+}
+
+input[type=submit] {
+  	all: unset;
+  	width: 5rem;
+  	height: 2rem;
+  	border-radius: 8px;
+  	font-weight: bold;
+  	color: var(--white);
+  	background-color: var(--blue);	
+  	text-align: center;
+}
+
+input[type=submit]:hover {
+  	background-color: var(--dark-blue);
+}
+
+input[type=radio] {
+  	height: 20px;
+  	width: 20px;
+  	padding: 4px;
+  	vertical-align: middle;
+  	border: 1px solid var(--dark-blue);
+}
+
+input[type=radio]:checked {
+  	background-color: var(--blue);
+}
+
+form.submitted input:invalid, form.submitted textarea:invalid {
+  	outline: none;
+  	border: 1.8px solid var(--red);
+  	box-shadow: 1.8px 1.8px 1.8px var(--dark-grey);
+}
+
+.radio-buttons {
+  	margin-bottom: 10px;
+}
+
+.pwd-message {
+  	color: var(--red);
+  	margin-top: -10px;
+}
+
+.success-message {
+	color: var(--blue);
+}
+
+.error-message {
+	color: var(--red);
+}

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>GuardianLink</title>
+</head>
+<body>
+    <h3>Request Password Change</h3>
+    <p>username: <span th:text="${username}"></span></p>
+    <p>email: <a th:href="'mailto:' + ${fromEmail}"><span th:text="${fromEmail}"></span></a></p>
+</body>
+</html>
